@@ -28,7 +28,7 @@
 - name: Download Guava 19.0 and copy to Spark jars folder
   become: yes
   become_user: "{{ analytics_user }}"
-  get_url: url= "{{https://repo1.maven.org}}" dest={{ analytics.home }}/spark-2.0.1-bin-hadoop2.7/jars/guava-19.0.jar timeout=1000 force=no owner={{ analytics_user }} group={{ analytics_group }}
+  get_url: url=https://repo1.maven.org dest={{ analytics.home }}/spark-2.0.1-bin-hadoop2.7/jars/guava-19.0.jar timeout=1000 force=no owner={{ analytics_user }} group={{ analytics_group }}
 
 - name: Remove jets3t 0.9.3 from Spark jars folder
   become: yes
@@ -90,12 +90,7 @@
 - name: Download Kafka-2.11
   become: yes
   become_user: "{{ analytics_user }}"
-  get_url: 
-    url: http://downloads.mesosphere.com/kafka/assets/kafka_2.11-0.10.1.0.tgz
-    dest: {{ analytics.home }}/kafka_2.11-0.10.1.0.tgz 
-    force: no 
-    owner: {{ analytics_user }} 
-    group: {{ analytics_group }}
+  get_url: url=http://downloads.mesosphere.com/kafka/assets/kafka_2.11-0.10.1.0.tgz dest: {{ analytics.home }}/kafka_2.11-0.10.1.0.tgz force: no owner: {{ analytics_user }} group: {{ analytics_group }}
   tags:
     - kafka-provision
 
